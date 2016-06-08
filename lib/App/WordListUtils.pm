@@ -20,4 +20,6 @@ L<WordList>:
 
 L<WordList>
 
+L<wordlist> which is distributed separately (with L<App::wordlist>)
+
 =cut
