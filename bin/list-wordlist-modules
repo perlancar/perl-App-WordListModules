@@ -1,0 +1,37 @@
+#!perl
+
+# DATE
+# VERSION
+
+#use 5.010001;
+use strict;
+use warnings;
+
+use PERLANCAR::Module::List;
+
+my @not_wl_modules = (
+    'WordList::MetaSyntactic', # only a base class
+);
+
+my $res = PERLANCAR::Module::List::list_modules(
+    'WordList::', {list_modules=>1, recurse=>1});
+for my $mod (sort keys %$res) {
+    # exclude some known false-positives
+    next if grep { $mod eq $_ } @not_wl_modules;
+    print "$mod\n";
+}
+
+# ABSTRACT: List all installed WordList modules
+# PODNAME:
+
+=head1 SYNOPSIS
+
+ % list-wordlist-modules
+
+
+=head1 DESCRIPTION
+
+This is a simple script to list all installed WordList modules.
+
+
+=head1 SEE ALSO
