@@ -1,4 +1,4 @@
-package App::ModulePatchUtils;
+package App::WordListUtils;
 
 # DATE
 # VERSION
@@ -6,18 +6,18 @@ package App::ModulePatchUtils;
 use 5.010001;
 
 1;
-# ABSTRACT: Collection of CLI utilities related to Module::Patch
+# ABSTRACT: Collection of CLI utilities related to WordList
 
 =head1 SYNOPSIS
 
 This distribution provides the following command-line utilities related to
-L<Module::Patch>:
+L<WordList>:
 
 #INSERT_EXECS_LIST
 
 
 =head1 SEE ALSO
 
-L<Module::Patch>
+L<WordList>
 
 =cut
