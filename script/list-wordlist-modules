@@ -7,7 +7,8 @@
 use strict;
 use warnings;
 
-use Perinci::CmdLine::Any;
+#use Perinci::CmdLine::Any;
+use Perinci::CmdLine::Classic;
 use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 use Module::List::Tiny;
 
@@ -30,6 +31,7 @@ my $res = gen_read_table_func(
             $row->{sort}       = ${"$mod\::SORT"};
             $row->{num_words}  = $stats->{num_words};
             $row->{num_params} = keys %{"$mod\::PARAMS"};
+            $row->{tags}       = \@{"$mod\::TAGS"};
             push @rows, $row;
         }
         {data => \@rows};
@@ -61,13 +63,18 @@ my $res = gen_read_table_func(
                 pos => 4,
                 sortable => 1,
             },
+            tags => {
+                schema => ['array*', of=>'str*'],
+                pos => 5,
+                sortable => 0,
+            },
         },
         pk => 'wordlist',
     },
 );
 die "Can't generate function: $res->[0] - $res->[1]" unless $res->[0] == 200;
 
-Perinci::CmdLine::Any->new(url => '/main/app')->run;
+Perinci::CmdLine::Classic->new(url => '/main/app')->run;
 
 # ABSTRACT:
 # PODNAME:
